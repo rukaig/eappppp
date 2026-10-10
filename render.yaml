@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: eapihs-assistant
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"

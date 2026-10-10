@@ -1,0 +1,25 @@
+{
+  "id": "/",
+  "name": "EAP Assistant",
+  "short_name": "EAP Assistant",
+  "description": "School learning and student services for the EAPIHS community.",
+  "start_url": "/appli.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f4f7",
+  "theme_color": "#12253f",
+  "icons": [
+    {
+      "src": "/assets/aldous-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/aldous-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

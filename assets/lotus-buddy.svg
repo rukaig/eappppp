@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
+  <style>
+    .plant { transform-box: view-box; transform-origin: 80px 143px; animation: bob 3.2s ease-in-out infinite; }
+    .petals { transform-box: view-box; transform-origin: 80px 104px; animation: sway 4s ease-in-out infinite; }
+    .eye { transform-box: fill-box; transform-origin: center; animation: blink 4.5s ease-in-out infinite; }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+    @keyframes sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+    @keyframes blink { 0%, 43%, 47%, 100% { transform: scaleY(1); } 45% { transform: scaleY(.12); } }
+    @media (prefers-reduced-motion: reduce) { .plant, .petals, .eye { animation: none; } }
+  </style>
+  <ellipse cx="80" cy="147" rx="31" ry="5" fill="#173D38" opacity=".12"/>
+  <g class="plant">
+    <path d="M38 132c11-18 27-23 42-13-10 19-26 24-42 13Zm84 0c-11-18-27-23-42-13 10 19 26 24 42 13Z" fill="#65A876" stroke="#286349" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M80 130V98" stroke="#347D59" stroke-width="7" stroke-linecap="round"/>
+    <g class="petals">
+      <path d="M80 111c-10-20-39-28-42-51-2-14 10-24 21-17 11 7 18 22 21 39 3-17 10-32 21-39 11-7 23 3 21 17-3 23-32 31-42 51Z" fill="#EA7391" stroke="#A64562" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M80 109c-12-14-22-30-17-43 3-9 12-10 17 1 5-11 14-10 17-1 5 13-5 29-17 43Z" fill="#F49AAF" stroke="#B65370" stroke-width="2.5" stroke-linejoin="round"/>
+      <ellipse class="eye" cx="74" cy="81" rx="2.2" ry="3.3" fill="#49343B"/>
+      <ellipse class="eye" cx="86" cy="81" rx="2.2" ry="3.3" fill="#49343B"/>
+      <path d="M74 90c3 4 9 4 12 0" stroke="#70404A" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="67" cy="87" r="2.8" fill="#F5C3A0" opacity=".85"/>
+      <circle cx="93" cy="87" r="2.8" fill="#F5C3A0" opacity=".85"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
+  <style>
+    .plant { transform-box: view-box; transform-origin: 80px 148px; animation: bob 2.8s ease-in-out infinite; }
+    .bloom { transform-box: view-box; transform-origin: 80px 65px; animation: sway 3.8s ease-in-out infinite; }
+    .eye { transform-box: fill-box; transform-origin: center; animation: blink 4.5s ease-in-out infinite; }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+    @keyframes sway { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+    @keyframes blink { 0%, 43%, 47%, 100% { transform: scaleY(1); } 45% { transform: scaleY(.12); } }
+    @media (prefers-reduced-motion: reduce) { .plant, .bloom, .eye { animation: none; } }
+  </style>
+  <ellipse cx="80" cy="150" rx="27" ry="4" fill="#173D38" opacity=".12"/>
+  <g class="plant">
+    <path d="M80 88c-2 19 1 39 0 58" stroke="#347D59" stroke-width="8" stroke-linecap="round"/>
+    <path d="M78 122c-18-16-31-12-33-2 8 13 20 16 34 9m3 3c13-14 26-13 29-4-5 11-17 16-30 12" fill="#72B66E" stroke="#286349" stroke-width="2.5" stroke-linejoin="round"/>
+    <g class="bloom">
+      <g fill="#FFFDF4" stroke="#D9D2B9" stroke-width="2">
+        <ellipse cx="80" cy="29" rx="8" ry="20"/>
+        <ellipse cx="80" cy="29" rx="8" ry="20" transform="rotate(30 80 65)"/>
+        <ellipse cx="80" cy="29" rx="8" ry="20" transform="rotate(60 80 65)"/>
+        <ellipse cx="80" cy="29" rx="8" ry="20" transform="rotate(90 80 65)"/>
+        <ellipse cx="80" cy="29" rx="8" ry="20" transform="rotate(120 80 65)"/>
+        <ellipse cx="80" cy="29" rx="8" ry="20" transform="rotate(150 80 65)"/>
+      </g>
+      <circle cx="80" cy="65" r="24" fill="#F5C84D" stroke="#BD842C" stroke-width="3"/>
+      <ellipse class="eye" cx="73" cy="64" rx="2.2" ry="3.2" fill="#493724"/>
+      <ellipse class="eye" cx="87" cy="64" rx="2.2" ry="3.2" fill="#493724"/>
+      <path d="M73 74c4 5 10 5 14 0" stroke="#654226" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="66" cy="71" r="3" fill="#E98770" opacity=".75"/>
+      <circle cx="94" cy="71" r="3" fill="#E98770" opacity=".75"/>
+    </g>
+  </g>
+</svg>

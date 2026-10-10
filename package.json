@@ -1,0 +1,19 @@
+{
+  "name": "eapihs-assistant",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Publishable backend and realtime server for EAPIHS Assistant",
+  "main": "server.js",
+  "scripts": {
+    "build": "node build.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
+}

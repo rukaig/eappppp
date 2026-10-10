@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAP icon studio</title>
+    <style>
+        :root {
+            --navy: #12253f;
+            --blue: #4b86f7;
+            --paper: #f6f9fd;
+            --muted: #758398;
+            --line: #e6ebf2;
+            --white: #ffffff;
+            --pink: #ff8fa3;
+            --yellow: #ffe38a;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 28px 18px;
+            color: var(--navy);
+            background: #0c1728;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        button, input { font: inherit; }
+        button { cursor: pointer; }
+
+        .studio {
+            width: min(100%, 940px);
+            margin: 0 auto;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 26px;
+            background: var(--paper);
+            box-shadow: 0 22px 70px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro {
+            padding: 34px 38px 25px;
+            border-bottom: 1px solid var(--line);
+            background: var(--white);
+        }
+
+        .eyebrow {
+            margin: 0 0 8px;
+            color: var(--blue);
+            font: 800 11px/1.2 Arial, sans-serif;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+        }
+
+        h1 { margin: 0; font-size: clamp(28px, 5vw, 44px); letter-spacing: -1.5px; }
+        .intro p:last-child { max-width: 520px; margin: 10px 0 0; color: var(--muted); font: 14px/1.55 Arial, sans-serif; }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: minmax(280px, 0.95fr) minmax(300px, 1.05fr);
+            gap: 42px;
+            align-items: center;
+            padding: 40px 38px 44px;
+        }
+
+        .preview-column { display: grid; justify-items: center; gap: 16px; }
+        .preview-label { margin: 0; color: var(--muted); font: 700 11px Arial, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; }
+
+        .icon-stage {
+            display: grid;
+            place-items: center;
+            width: min(100%, 340px);
+            aspect-ratio: 1;
+            border-radius: 34px;
+            background: #e9e8ff;
+            background-image: radial-gradient(rgba(75, 134, 247, 0.16) 1px, transparent 1px);
+            background-size: 14px 14px;
+        }
+
+        #iconPreview { display: block; width: 82%; height: 82%; filter: drop-shadow(0 16px 18px rgba(18, 37, 63, 0.18)); }
+        .preview-note { margin: 0; color: var(--muted); font: 12px Arial, sans-serif; }
+
+        .controls { display: grid; gap: 21px; }
+        .control-group { display: grid; gap: 9px; }
+        .control-group label, .control-title { color: var(--navy); font: 800 12px Arial, sans-serif; }
+        input[type="text"] { width: 100%; padding: 12px 13px; border: 1px solid var(--line); border-radius: 10px; color: var(--navy); background: var(--white); outline: none; }
+        input[type="text"]:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(75, 134, 247, 0.14); }
+
+        .swatches { display: flex; flex-wrap: wrap; gap: 9px; }
+        .swatch { width: 31px; height: 31px; padding: 0; border: 3px solid var(--white); border-radius: 50%; box-shadow: 0 0 0 1px var(--line); }
+        .swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--navy); }
+        .swatch:focus-visible { outline: 3px solid rgba(75, 134, 247, 0.4); outline-offset: 2px; }
+
+        .emblems { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .emblem { padding: 10px 5px; border: 1px solid var(--line); border-radius: 9px; color: var(--navy); background: var(--white); font-size: 20px; }
+        .emblem[aria-pressed="true"] { border-color: var(--blue); background: #edf3ff; box-shadow: inset 0 0 0 1px var(--blue); }
+
+        .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .download { padding: 13px 15px; border: 0; border-radius: 10px; color: var(--white); background: var(--navy); font: 800 12px Arial, sans-serif; }
+        .download.secondary { color: var(--navy); background: var(--yellow); }
+        .download:hover { transform: translateY(-1px); filter: brightness(1.04); }
+        .file-note { margin: -7px 0 0; color: var(--muted); font: 11px/1.4 Arial, sans-serif; }
+
+        @media (max-width: 700px) {
+            body { padding: 0; }
+            .studio { min-height: 100vh; border: 0; border-radius: 0; }
+            .intro, .workspace { padding-left: 22px; padding-right: 22px; }
+            .workspace { grid-template-columns: 1fr; gap: 28px; padding-top: 28px; }
+            .icon-stage { width: min(78vw, 300px); }
+        }
+    </style>
+</head>
+<body>
+    <main class="studio">
+        <header class="intro">
+            <p class="eyebrow">EAPIHS Assistant / icon studio</p>
+            <h1>Make EAP yours.</h1>
+            <p>Build a cute academic badge for your phone home screen. Personalize the colors, name, and little study companion.</p>
+        </header>
+
+        <section class="workspace" aria-label="Icon customizer">
+            <div class="preview-column">
+                <p class="preview-label">Home screen preview</p>
+                <div class="icon-stage">
+                    <svg id="iconPreview" viewBox="0 0 512 512" role="img" aria-label="Custom EAP app icon"></svg>
+                </div>
+                <p class="preview-note">1024 x 1024 PNG, ready to use</p>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label for="iconName">Your label</label>
+                    <input id="iconName" type="text" maxlength="12" value="EAP" autocomplete="off">
+                </div>
+
+                <div class="control-group">
+                    <span class="control-title">Badge color</span>
+                    <div class="swatches" id="badgeColors" aria-label="Badge color choices">
+                        <button class="swatch" type="button" style="background:#dff5ee" data-color="#dff5ee" aria-label="Mint" aria-pressed="true"></button>
+                        <button class="swatch" type="button" style="background:#ffe4e4" data-color="#ffe4e4" aria-label="Rose" aria-pressed="false"></button>
+                        <button class="swatch" type="button" style="background:#fff1c8" data-color="#fff1c8" aria-label="Sunshine" aria-pressed="false"></button>
+                        <button class="swatch" type="button" style="background:#e9e8ff" data-color="#e9e8ff" aria-label="Lavender" aria-pressed="false"></button>
+                        <button class="swatch" type="button" style="background:#e0efff" data-color="#e0efff" aria-label="Sky" aria-pressed="false"></button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <span class="control-title">Study companion</span>
+                    <div class="emblems" id="emblemChoices" aria-label="Study companion choices">
+                        <button class="emblem" type="button" data-emblem="cap" aria-label="Graduation cap" aria-pressed="true">🎓</button>
+                        <button class="emblem" type="button" data-emblem="book" aria-label="Open book" aria-pressed="false">📖</button>
+                        <button class="emblem" type="button" data-emblem="pencil" aria-label="Pencil" aria-pressed="false">✏️</button>
+                        <button class="emblem" type="button" data-emblem="star" aria-label="Star" aria-pressed="false">⭐</button>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="download" id="downloadPng" type="button">Download PNG</button>
+                    <button class="download secondary" id="downloadSvg" type="button">Download SVG</button>
+                </div>
+                <p class="file-note">Use the PNG as your device icon, or keep the SVG for a crisp editable version.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const preview = document.getElementById("iconPreview");
+        const nameInput = document.getElementById("iconName");
+        let badgeColor = "#dff5ee";
+        let emblem = "cap";
+
+        const emblemMarkup = {
+            cap: '<path d="M168 174 256 132 344 174 256 215Z" fill="#12253f"/><path d="M193 187v42c28 23 98 23 126 0v-42l-63 28Z" fill="#4b86f7"/><path d="M344 174v57" stroke="#12253f" stroke-width="8" stroke-linecap="round"/><circle cx="344" cy="238" r="10" fill="#ff8fa3"/>',
+            book: '<path d="M256 205c-30-23-67-26-101-11v112c34-15 71-12 101 11Z" fill="#4b86f7"/><path d="M256 205c30-23 67-26 101-11v112c-34-15-71-12-101 11Z" fill="#12253f"/><path d="M256 205v112" stroke="#fff" stroke-width="7"/>',
+            pencil: '<path d="m191 267 89-89 35 35-89 89-43 8Z" fill="#ff8fa3"/><path d="m280 178 16-16 35 35-16 16Z" fill="#ffe38a"/><path d="m191 267-8 43 43-8Z" fill="#12253f"/>',
+            star: '<path d="m256 159 24 56 60 5-46 39 14 59-52-31-52 31 14-59-46-39 60-5Z" fill="#ffe38a" stroke="#12253f" stroke-width="8" stroke-linejoin="round"/>'
+        };
+
+        function renderIcon() {
+            const label = (nameInput.value.trim() || "EAP").slice(0, 12);
+            const fontSize = label.length > 8 ? 43 : label.length > 5 ? 54 : 66;
+            preview.innerHTML = `
+                <rect x="18" y="18" width="476" height="476" rx="112" fill="${badgeColor}"/>
+                <circle cx="407" cy="105" r="27" fill="#ff8fa3" opacity=".95"/>
+                <circle cx="104" cy="407" r="18" fill="#ffe38a"/>
+                ${emblemMarkup[emblem]}
+                <path d="M137 337c32-28 72-28 119 0 47-28 87-28 119 0" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round"/>
+                <text x="256" y="405" text-anchor="middle" fill="#12253f" font-family="Georgia, serif" font-size="${fontSize}" font-weight="700" letter-spacing="2">${escapeXml(label)}</text>`;
+        }
+
+        function escapeXml(value) {
+            return value.replace(/[<>&'\"]/g, character => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", "\"": "&quot;" }[character]));
+        }
+
+        function downloadBlob(blob, filename) {
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(link.href);
+        }
+
+        document.getElementById("badgeColors").addEventListener("click", event => {
+            const button = event.target.closest("[data-color]");
+            if (!button) return;
+            badgeColor = button.dataset.color;
+            document.querySelectorAll("#badgeColors .swatch").forEach(item => item.setAttribute("aria-pressed", item === button));
+            renderIcon();
+        });
+
+        document.getElementById("emblemChoices").addEventListener("click", event => {
+            const button = event.target.closest("[data-emblem]");
+            if (!button) return;
+            emblem = button.dataset.emblem;
+            document.querySelectorAll("#emblemChoices .emblem").forEach(item => item.setAttribute("aria-pressed", item === button));
+            renderIcon();
+        });
+
+        nameInput.addEventListener("input", renderIcon);
+
+        document.getElementById("downloadSvg").addEventListener("click", () => {
+            const svg = new Blob([preview.outerHTML], { type: "image/svg+xml" });
+            downloadBlob(svg, "eap-home-icon.svg");
+        });
+
+        document.getElementById("downloadPng").addEventListener("click", () => {
+            const svg = new Blob([preview.outerHTML], { type: "image/svg+xml" });
+            const url = URL.createObjectURL(svg);
+            const image = new Image();
+            image.onload = () => {
+                const canvas = document.createElement("canvas");
+                canvas.width = 1024;
+                canvas.height = 1024;
+                canvas.getContext("2d").drawImage(image, 0, 0, 1024, 1024);
+                canvas.toBlob(blob => downloadBlob(blob, "eap-home-icon.png"), "image/png");
+                URL.revokeObjectURL(url);
+            };
+            image.src = url;
+        });
+
+        renderIcon();
+    </script>
+</body>
+</html>
